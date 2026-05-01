@@ -1,8 +1,6 @@
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function FinancialAidPage() {
-  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const ngos = [
     {
@@ -70,7 +68,6 @@ export default function FinancialAidPage() {
           ))}
         </div>
       </div>
-      <button className="floating-help" type="button" onClick={() => navigate("/chat")}>◎</button>
     </div>
   );
 }

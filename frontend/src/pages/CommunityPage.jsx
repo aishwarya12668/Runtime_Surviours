@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const initialPosts = [
   {
@@ -21,7 +20,6 @@ const initialPosts = [
 ];
 
 export default function CommunityPage() {
-  const navigate = useNavigate();
   const [posts, setPosts] = useState(initialPosts);
   const [author, setAuthor] = useState("");
   const [type, setType] = useState("Experience");
@@ -128,7 +126,6 @@ export default function CommunityPage() {
           </div>
         ))}
       </div>
-      <button className="floating-help" type="button" onClick={() => navigate("/chat")}>◎</button>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import { useNavigate } from "react-router-dom";
 
 const SLOT_TIMES = ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00"];
 const DUMMY_DOCTORS = [
@@ -63,7 +62,6 @@ const DUMMY_DOCTORS = [
 const toInputDateTime = (dateStr, time) => `${dateStr}T${time}`;
 
 export default function AppointmentsPage() {
-  const navigate = useNavigate();
   const [doctors, setDoctors] = useState([]);
   const [appointments, setAppointments] = useState([]);
   const [localAppointments, setLocalAppointments] = useState(
@@ -278,7 +276,6 @@ export default function AppointmentsPage() {
           </div>
         )}
       </div>
-      <button className="floating-help" type="button" onClick={() => navigate("/chat")}>◎</button>
     </div>
   );
 }

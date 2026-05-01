@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const QUESTIONS = [
   {
@@ -91,7 +90,6 @@ const resultForScore = (score) => {
 };
 
 export default function RiskPage() {
-  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showResult, setShowResult] = useState(false);
@@ -206,7 +204,6 @@ export default function RiskPage() {
           )}
         </div>
       </div>
-      <button className="floating-help" type="button" onClick={() => navigate("/chat")}>◎</button>
     </div>
   );
 }

@@ -1,9 +1,7 @@
 import { useState } from "react";
 import api from "../services/api";
-import { useNavigate } from "react-router-dom";
 
 export default function TreatmentPage() {
-  const navigate = useNavigate();
   const [med, setMed] = useState("");
   const [checklist, setChecklist] = useState({ meds: false, hydration: false, exercise: false });
   const [date, setDate] = useState("");
@@ -32,7 +30,6 @@ export default function TreatmentPage() {
           <button className="btn" onClick={saveReminder} type="button">Add Reminder</button>
         </div>
       </div>
-      <button className="floating-help" type="button" onClick={() => navigate("/chat")}>◎</button>
     </div>
   );
 }

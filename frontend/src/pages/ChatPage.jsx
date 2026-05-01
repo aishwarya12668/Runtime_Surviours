@@ -1,33 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-
-const FAQ_RESPONSES = [
-  {
-    q: "What are common symptoms of breast cancer?",
-    a: "Common signs include a new lump in breast or armpit, change in breast shape/size, nipple discharge, skin dimpling, or persistent pain. Any new change should be checked by a doctor.",
-  },
-  {
-    q: "How often should I do breast self-exam?",
-    a: "A monthly self-check is helpful. Also schedule regular clinical exams and age-appropriate mammograms based on your doctor's advice.",
-  },
-  {
-    q: "Can breast cancer be treated successfully?",
-    a: "Yes. Early detection and timely treatment improve outcomes significantly. Treatment may include surgery, chemotherapy, radiation, hormone therapy, or targeted therapy.",
-  },
-  {
-    q: "When should I see a doctor urgently?",
-    a: "See a doctor promptly if you notice a persistent lump, bloody nipple discharge, skin changes, swelling, or rapidly worsening symptoms.",
-  },
-];
-
-const getFaqReply = (text) => {
-  const q = text.toLowerCase();
-  if (q.includes("symptom")) return FAQ_RESPONSES[0].a;
-  if (q.includes("self") || q.includes("exam")) return FAQ_RESPONSES[1].a;
-  if (q.includes("treat") || q.includes("cure")) return FAQ_RESPONSES[2].a;
-  if (q.includes("urgent") || q.includes("doctor") || q.includes("lump")) return FAQ_RESPONSES[3].a;
-  return "I can help with basic breast cancer FAQs on symptoms, screening, treatment, and when to see a doctor. Ask me a specific question.";
-};
+import { FAQ_STARTERS, getBreastCancerReply } from "../utils/breastCancerAnswers";
 
 export default function ChatPage() {
   const [messages, setMessages] = useState([]);
@@ -72,7 +45,7 @@ export default function ChatPage() {
         {
           _id: `local-ai-${Date.now() + 1}`,
           role: "assistant",
-          message: getFaqReply(message),
+          message: getBreastCancerReply(message),
           timestamp: new Date().toISOString(),
         },
       ];
@@ -95,9 +68,9 @@ export default function ChatPage() {
           <option value="en">English</option><option value="hi">Hindi</option><option value="ta">Tamil</option>
         </select>
         <div className="stats-grid">
-          {FAQ_RESPONSES.map((item) => (
-            <button key={item.q} className="option-card" type="button" onClick={() => setMessage(item.q)}>
-              {item.q}
+          {FAQ_STARTERS.map((item) => (
+            <button key={item} className="option-card" type="button" onClick={() => setMessage(item)}>
+              {item}
             </button>
           ))}
         </div>

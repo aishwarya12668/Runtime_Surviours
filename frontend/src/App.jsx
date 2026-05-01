@@ -10,6 +10,7 @@ import ChatPage from "./pages/ChatPage";
 import TreatmentPage from "./pages/TreatmentPage";
 import CommunityPage from "./pages/CommunityPage";
 import FinancialAidPage from "./pages/FinancialAidPage";
+import ChatWidget from "./components/ChatWidget";
 
 const links = [
   { label: "Dashboard", path: "/dashboard" },
@@ -62,6 +63,7 @@ export default function App() {
         <Route path="/aid" element={<Navigate to="/financial-aid" />} />
         <Route path="/financial-aid" element={user ? <FinancialAidPage /> : <Navigate to="/auth" />} />
       </Routes>
+      {user && <ChatWidget />}
     </div>
   );
 }

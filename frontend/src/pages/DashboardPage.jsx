@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 
 export default function DashboardPage() {
   const { user } = useAuth();
-  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [riskLevel, setRiskLevel] = useState("-");
   const [localAppointmentCount, setLocalAppointmentCount] = useState(0);
@@ -83,7 +81,6 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-      <button className="floating-help" type="button" onClick={() => navigate("/chat")}>◎</button>
     </div>
   );
 }

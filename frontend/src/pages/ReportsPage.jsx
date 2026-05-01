@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import { useNavigate } from "react-router-dom";
 
 export default function ReportsPage() {
-  const navigate = useNavigate();
   const [reports, setReports] = useState([]);
   const load = async () => setReports((await api.get("/reports")).data);
   useEffect(() => { load(); }, []);
@@ -40,7 +38,6 @@ export default function ReportsPage() {
           )}
         </div>
       </div>
-      <button className="floating-help" type="button" onClick={() => navigate("/chat")}>◎</button>
     </div>
   );
 }
